@@ -1,12 +1,9 @@
 package main
 
-import (
-	"fmt"
-	_ "goSnippets/init1"
-	_ "goSnippets/init2"
-)
+import "fmt"
 
 // 用于测试代码
 func main() {
-	fmt.Println(SafeFtoi(32.6))
+	fmt.Println(CharCount("asSASA ddd dsjkdsjs dk"))
+	fmt.Println(CharCount("asSASA ddd dsjkdsjsこん dk"))
 }
