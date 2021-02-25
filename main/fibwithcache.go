@@ -18,7 +18,7 @@ func CachedFib(n int) int {
 
 func init() {
 	DefaultLogger.Log()
-	for i := 0; i <= Len; i++ {
+	for i := 0; i < Len; i++ {
 		fmt.Printf("%v: %v\n", i, CachedFib(i))
 	}
 }
