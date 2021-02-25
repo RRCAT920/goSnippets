@@ -13,3 +13,8 @@ func variable() {
 	path := os.Getenv("PATH")
 	fmt.Printf("Path is %s\n", path)
 }
+
+func init() {
+	DefaultLogger.Log()
+	variable()
+}

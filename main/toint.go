@@ -17,3 +17,17 @@ func SafeFtoi(f float64) int32 {
 	}
 	panic(fmt.Sprintf("%g is out of the int32 range", f))
 }
+
+func init() {
+	DefaultLogger.Log()
+	v := 32.2
+	fmt.Printf("%f to %d\n", v, SafeFtoi(v))
+	v = 2.147483648123e+09
+
+	defer func() {
+		if x := recover(); x != nil {
+			fmt.Println(x)
+		}
+	}()
+	SafeFtoi(v)
+}

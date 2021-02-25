@@ -1,6 +1,9 @@
 package main
 
-import "math/big"
+import (
+	"fmt"
+	"math/big"
+)
 
 // 阶乘算法
 func fac(n int64) *big.Int {
@@ -9,4 +12,11 @@ func fac(n int64) *big.Int {
 		res.Mul(res, big.NewInt(i))
 	}
 	return res
+}
+
+func init() {
+	DefaultLogger.Log()
+	for i := 0; i <= 30; i++ {
+		fmt.Printf("%d: %v\n", i, fac(int64(i)))
+	}
 }

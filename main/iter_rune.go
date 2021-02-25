@@ -8,3 +8,8 @@ func IterUnicodeStr(s string) {
 		fmt.Printf("%c", char)
 	}
 }
+
+func init() {
+	DefaultLogger.Log()
+	IterUnicodeStr("你好中国")
+}
