@@ -7,6 +7,7 @@ func IterUnicodeStr(s string) {
 	for _, char := range s {
 		fmt.Printf("%c", char)
 	}
+	fmt.Println()
 }
 
 func init() {
