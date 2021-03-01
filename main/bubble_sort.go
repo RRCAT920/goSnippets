@@ -23,6 +23,3 @@ func init() {
 	bubbleSort(a)
 	fmt.Println(a)
 }
-
-type Miner interface {
-}
