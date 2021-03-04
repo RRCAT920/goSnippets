@@ -1,6 +1,9 @@
 package main
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // 用于测试代码
 // like
@@ -14,4 +17,5 @@ func foo() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("jklasd")
 }
