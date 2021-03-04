@@ -1,4 +1,4 @@
-package main
+package mydatastructure
 
 import (
 	"fmt"

@@ -1,0 +1,4 @@
+package websoc
+
+func init() {
+}
