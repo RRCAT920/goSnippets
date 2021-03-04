@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goSnippets/logger"
+)
 
 // 表示资源的使用状态
 const (
@@ -10,7 +13,7 @@ const (
 )
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	fmt.Println("Open:", Open)
 	fmt.Println("Close:", Close)
 	fmt.Println("Pending:", Pending)

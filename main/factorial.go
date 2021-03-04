@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"math/big"
 )
 
@@ -15,7 +16,7 @@ func fac(n int64) *big.Int {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	for i := 0; i <= 30; i++ {
 		fmt.Printf("%d: %v\n", i, fac(int64(i)))
 	}

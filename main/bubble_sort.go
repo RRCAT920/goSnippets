@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goSnippets/logger"
+)
 
 // 最优的单向冒泡排序
 func bubbleSort(a []int) {
@@ -18,7 +21,7 @@ func bubbleSort(a []int) {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	a := []int{4, 2, 3, 5, 1}
 	bubbleSort(a)
 	fmt.Println(a)

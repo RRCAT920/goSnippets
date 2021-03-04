@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"log"
 	"reflect"
 	"runtime"
@@ -22,7 +23,7 @@ func calExecTime(fn interface{}) {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	calExecTime(test)
 }
 

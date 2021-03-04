@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"strings"
 )
 
@@ -17,7 +18,7 @@ func MakeAddSuffix(suffix string) AddSuffixFunc {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	addJpg := MakeAddSuffix(".jpg")
 	fmt.Println(addJpg("Luffy"))
 }

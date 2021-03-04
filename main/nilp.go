@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goSnippets/logger"
+)
 
 // 反引用 空指针
 func NilPointer() {
@@ -9,7 +12,7 @@ func NilPointer() {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	defer func() {
 		if x := recover(); x != nil {
 			fmt.Println("*(nil pointer)")

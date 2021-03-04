@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"math"
 )
 
 // 安全的float64转成int32
 func SafeFtoi(f float64) int32 {
+
 	if math.MinInt32 <= f && f <= math.MaxInt32 {
 		// why not int(f+0.5)?
 		i, frac := math.Modf(f)
@@ -19,7 +21,7 @@ func SafeFtoi(f float64) int32 {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	v := 32.2
 	fmt.Printf("%f to %d\n", v, SafeFtoi(v))
 	v = 2.147483648123e+09

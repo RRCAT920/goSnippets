@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"goSnippets/logger"
 	"strings"
 )
 
@@ -14,6 +15,6 @@ func ReaderDefaultBehavior() {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	ReaderDefaultBehavior()
 }

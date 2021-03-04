@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goSnippets/logger"
+)
 
 const Len = 41
 
@@ -17,7 +20,7 @@ func CachedFib(n int) int {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	for i := 0; i < Len; i++ {
 		fmt.Printf("%v: %v\n", i, CachedFib(i))
 	}

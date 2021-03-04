@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"os"
 	"runtime"
 )
@@ -15,6 +16,6 @@ func variable() {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	variable()
 }

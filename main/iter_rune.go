@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goSnippets/logger"
+)
 
 // 迭代Unicode字符串
 func IterUnicodeStr(s string) {
@@ -11,6 +14,6 @@ func IterUnicodeStr(s string) {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	IterUnicodeStr("你好中国")
 }

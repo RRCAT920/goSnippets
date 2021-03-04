@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"unicode/utf8"
 )
 
@@ -13,7 +14,7 @@ func CharCount(s string) (bytes, runes int) {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	const msg = "你好中国，hello Chinese"
 	b, r := CharCount(msg)
 	fmt.Printf("bytes: %v, runes: %v\n", b, r)

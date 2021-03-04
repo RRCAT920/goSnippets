@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goSnippets/logger"
 	"math"
 )
 
@@ -11,7 +12,7 @@ func GoldenFib(i int) int {
 }
 
 func init() {
-	DefaultLogger.Log()
+	logger.DefaultLogger.Log()
 	for i := 0; i <= 30; i++ {
 		fmt.Printf("%v: %v\n", i, GoldenFib(i))
 	}
