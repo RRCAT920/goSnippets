@@ -1,4 +1,0 @@
-package websoc
-
-func init() {
-}
