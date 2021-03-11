@@ -1,5 +1,7 @@
 package mystring
 
+import "fmt"
+
 // 修改字符串中的字符
 func Set(s *string, index int, char byte) {
 	temp := []byte(*s)
@@ -24,4 +26,14 @@ func Compare(a, b []byte) int {
 		return 1
 	}
 	return 0
+}
+
+func init() {
+	s := "Yes!你好中国"
+	for i, ch := range s { // i 不连续，按byte计数
+		fmt.Println(i, ch)
+	}
+	for i, ch := range []rune(s) { // i 连续，按rune计数
+		fmt.Println(i, ch)
+	}
 }
