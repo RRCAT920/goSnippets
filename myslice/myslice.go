@@ -1,6 +1,10 @@
 package myslice
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"regexp"
+)
 
 func init() {
 	a := []int{1, 2}
@@ -35,4 +39,20 @@ func init() {
 
 	// 插入多个元素
 	fmt.Println(append(a[:0], append(b, a[0:]...)...))
+}
+
+// 相关数组在没有切片引用时才会释放内存
+var pattern = regexp.MustCompile(`\d+`)
+
+func FindDigits(filename string) []byte {
+	file, _ := ioutil.ReadFile(filename)
+	return pattern.Find(file) // 返回的切片引用了整个文件
+}
+
+func LowMemFindDigits(filename string) []byte {
+	file, _ := ioutil.ReadFile(filename)
+	digits := pattern.Find(file)
+	cache := make([]byte, len(digits))
+	copy(cache, digits) // 仅引用有效数据
+	return cache
 }
