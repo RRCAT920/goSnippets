@@ -7,9 +7,9 @@ import (
 	"os"
 )
 
-type errorHandler func(http.ResponseWriter, *http.Request) error
+type appHandler func(http.ResponseWriter, *http.Request) error
 
-func errorWrapper(handler errorHandler) http.HandlerFunc {
+func errorWrapper(handler appHandler) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
@@ -21,10 +21,12 @@ func errorWrapper(handler errorHandler) http.HandlerFunc {
 		}()
 		err := handler(writer, request)
 		if err != nil {
-			if handleUserErrorSucceed(writer, err) {
-				return
+			switch errTyped := err.(type) {
+			case userError:
+				handleUserError(writer, errTyped)
+			default:
+				handleSystemError(writer, err)
 			}
-			handleSystemError(writer, err)
 		}
 	}
 }
@@ -43,15 +45,11 @@ func handleSystemError(writer http.ResponseWriter, err error) {
 	http.Error(writer, http.StatusText(code), code)
 }
 
-func handleUserErrorSucceed(writer http.ResponseWriter, err error) bool {
-	if userErr, ok := err.(userError); ok {
-		log.Printf("Error occurred handling request: %s\n", userErr.Message())
-		http.Error(writer,
-			userErr.Message(),
-			http.StatusBadRequest)
-		return true
-	}
-	return false
+func handleUserError(writer http.ResponseWriter, err userError) {
+	log.Printf("Error occurred handling request: %s\n", err.Message())
+	http.Error(writer,
+		err.Message(),
+		http.StatusBadRequest)
 }
 
 type userError interface {
