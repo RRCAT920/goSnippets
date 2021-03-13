@@ -9,7 +9,7 @@ import (
 
 type errorHandler func(http.ResponseWriter, *http.Request) error
 
-func errorWrap(handler errorHandler) http.HandlerFunc {
+func errorWrapper(handler errorHandler) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
@@ -24,12 +24,12 @@ func errorWrap(handler errorHandler) http.HandlerFunc {
 			if handleUserErrorSucceed(writer, err) {
 				return
 			}
-			handleHTTPError(writer, err)
+			handleSystemError(writer, err)
 		}
 	}
 }
 
-func handleHTTPError(writer http.ResponseWriter, err error) {
+func handleSystemError(writer http.ResponseWriter, err error) {
 	log.Printf("Error occurred handling request: %s\n", err)
 	code := http.StatusOK
 	switch {
@@ -60,7 +60,7 @@ type userError interface {
 }
 
 func main() {
-	http.HandleFunc("/", errorWrap(controller.ListFile))
+	http.HandleFunc("/", errorWrapper(controller.ListFile))
 	err := http.ListenAndServe(":9090", nil)
 	if err != nil {
 		panic(err)
